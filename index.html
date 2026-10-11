@@ -77,7 +77,7 @@ nav a.btn-s:hover{background:var(--text);color:#000}
 @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
 /* waveform */
-.wave{display:block;width:100%;height:64px;margin-top:clamp(28px,4vw,52px);animation:fade 1.4s var(--ease) .9s both;
+.wave{display:block;width:100%;height:84px;margin-top:clamp(28px,4vw,52px);animation:fade 1.4s var(--ease) .9s both;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 
@@ -156,7 +156,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
   nav a:not(.btn-s){display:none}
   .actions .btn{flex:1 1 100%}
   .shot{flex-basis:78%}
-  .wave{height:52px}
+  .wave{height:64px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -288,41 +288,78 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
 
-  /* waveform with a travelling playhead */
+  /* single ECG trace: irregular beats, sweeping monitor line */
   var c = document.getElementById('wave');
   if(c && c.getContext){
-    var ctx = c.getContext('2d'), W = 0, H = 0, dpr = 1, n = 0, raf = 0, visible = true;
+    var ctx = c.getContext('2d'), W = 0, H = 0, dpr = 1, sx = 2, N = 0, buf = null, head = 0;
+    var raf = 0, acc = 0, lastT = 0, beat = null, bi = 0, tick2 = 0;
+    var SPEED = 110; /* px per second */
+    function rnd(a,b){ return a + Math.random()*(b-a); }
+    function gauss(x,cn,sg,am){ var d = (x-cn)/sg; return am*Math.exp(-d*d/2); }
+    function newBeat(){
+      var ect = Math.random() < .1, sh = Math.round(rnd(-1,1));
+      var len = Math.round(rnd(38,78)) + (Math.random() < .07 ? Math.round(rnd(14,30)) : 0);
+      return {
+        len: len, ect: ect,
+        pC: 4 + Math.round(rnd(-1,2)), pS: rnd(1.6,2.4), pA: (ect || Math.random() < .08) ? 0 : rnd(.09,.2),
+        qC: 11 + sh, qA: -rnd(.08,.18),
+        rC: 13 + sh, rS: ect ? 2.1 : rnd(.8,1.1), rA: ect ? rnd(1.05,1.2) : rnd(.62,1.12),
+        sC: 15 + sh + (ect ? 1 : 0), sA: -rnd(.14,.3),
+        tC: 25 + Math.round(rnd(-2,3)), tS: rnd(3,4.4), tA: ect ? -rnd(.14,.26) : rnd(.14,.34)
+      };
+    }
+    function sample(){
+      if(!beat || bi >= beat.len){ beat = newBeat(); bi = 0; }
+      var b = beat, x = bi++;
+      var v = gauss(x,b.pC,b.pS,b.pA) + gauss(x,b.qC,.8,b.qA) + gauss(x,b.rC,b.rS,b.rA) +
+              gauss(x,b.sC,1,b.sA) + gauss(x,b.tC,b.tS,b.tA);
+      tick2++;
+      return v + (Math.random()-.5)*.03 + .014*Math.sin(tick2*.37);
+    }
     function size(){
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       var r = c.getBoundingClientRect(); W = r.width; H = r.height;
       c.width = Math.round(W*dpr); c.height = Math.round(H*dpr);
-      n = Math.max(20, Math.floor(W/7));
-      if(reduce) draw(0);
+      N = Math.max(60, Math.floor(W/sx));
+      buf = new Float32Array(N);
+      for(var i=0;i<N;i++) buf[i] = sample();
+      head = reduce ? Math.floor(N*.62) : 0;
+      draw();
     }
-    function env(i, t){
-      var x = i/n;
-      return .2 + .8*Math.abs(.55*Math.sin(x*9 + t*.6) + .3*Math.sin(x*23 - t*.9) + .15*Math.sin(x*51 + t*1.7));
-    }
-    function draw(t){
+    function draw(){
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,W,H);
-      var step = W/n, px = (reduce ? .38 : ((t*.05) % 1.3) - .15) * W;
-      for(var i=0;i<n;i++){
-        var x = i*step + step/2, h = Math.max(2, env(i,t)*H*.92);
-        var k = Math.max(0, 1 - Math.abs(x-px)/(W*.14)), a = k*k;
-        ctx.fillStyle = 'rgb(' + Math.round(58+197*a) + ',' + Math.round(58-13*a) + ',' + Math.round(58+27*a) + ')';
-        ctx.fillRect(x-1, (H-h)/2, 2, h);
+      var base = H*.66, amp = H*.5, gap = Math.max(4, Math.round(N*.035)), cnt = N - gap, B = 36, per = Math.ceil(cnt/B);
+      ctx.lineWidth = 1.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      for(var b=0;b<B;b++){
+        var s0 = b*per, e0 = Math.min(cnt, (b+1)*per + 1);
+        if(s0 >= cnt) break;
+        var f = Math.pow((b+1)/B, 2.4);
+        ctx.strokeStyle = 'rgb(' + Math.round(52+203*f) + ',' + Math.round(52-7*f) + ',' + Math.round(52+33*f) + ')';
+        ctx.beginPath();
+        for(var k=s0;k<e0;k++){
+          var idx = (head + gap + k) % N, x = idx*sx + sx/2, y = base - buf[idx]*amp;
+          if(k === s0 || idx === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.stroke();
       }
+      var hx = head*sx + sx/2, hy = base - buf[head]*amp;
+      ctx.fillStyle = '#fff'; ctx.fillRect(hx-1.5, hy-1.5, 3, 3);
     }
-    function loop(ts){ draw(ts/1000); raf = requestAnimationFrame(loop); }
-    function start(){ if(!raf && !reduce) raf = requestAnimationFrame(loop); }
+    function loop(ts){
+      var dt = lastT ? Math.min((ts-lastT)/1000, .1) : .016; lastT = ts;
+      acc += dt*SPEED/sx;
+      while(acc >= 1){ head = (head+1) % N; buf[head] = sample(); acc--; }
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+    function start(){ if(!raf && !reduce){ lastT = 0; raf = requestAnimationFrame(loop); } }
     function stop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } }
     size();
     if('ResizeObserver' in window) new ResizeObserver(size).observe(c); else addEventListener('resize', size);
     if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){ visible = es[0].isIntersecting; visible ? start() : stop(); }).observe(c);
+      new IntersectionObserver(function(es){ es[0].isIntersecting ? start() : stop(); }).observe(c);
     } else start();
-    if(!reduce) start();
   }
 
   /* phone: screenshots drift sideways on their own, pause when touched */
