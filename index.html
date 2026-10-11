@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurix – Free music player for Android</title>
+<meta name="description" content="Aurix is a free music player for Android. Search, build a library, download for offline. Open source.">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Aurix">
+<meta property="og:description" content="Your music. Your Aurix. A free music player for Android.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="src/favicon.png">
+<link rel="apple-touch-icon" href="src/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;
+  --surface:#0a0a0a;
+  --line:#262626;
+  --text:#f5f5f5;
+  --muted:#8a8a8a;
+  --accent:#ff2d55;
+  --pad:clamp(20px,4vw,56px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Outfit","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:400;font-size:17px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{display:block;max-width:100%}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+
+/* header */
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:19px;letter-spacing:-.01em}
+.brand img{width:26px;height:26px}
+nav{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--text)}
+nav a.btn-s{color:var(--text);border:1px solid var(--text);padding:8px 16px}
+nav a.btn-s:hover{background:var(--text);color:#000}
+
+/* hero */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(48px,7vw,88px)}
+.hero .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.hero h1{
+  grid-column:1 / span 8;
+  font-weight:600;font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.035em;
+}
+.hero .side{grid-column:1 / span 6;margin-top:28px;color:var(--muted);font-size:clamp(17px,1.5vw,20px);max-width:34ch}
+.actions{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;font-weight:500;font-size:16px;border:1px solid var(--line);transition:background .15s,color .15s,border-color .15s}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#000;font-weight:600}
+.btn.primary:hover{background:#fff;border-color:#fff}
+.btn.ghost:hover{border-color:var(--text)}
+
+/* meta row */
+.meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(48px,7vw,88px)}
+.meta div{padding:20px 20px 20px 0}
+.meta div+div{padding-left:20px;border-left:1px solid var(--line)}
+.meta dt{font-size:14px;color:var(--muted)}
+.meta dd{font-size:20px;font-weight:500;margin-top:2px}
+
+/* screens */
+.screens{padding:clamp(40px,6vw,80px) 0}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.shot{background:var(--surface);padding:clamp(12px,1.6vw,22px);border-left:1px solid var(--line)}
+.shot:first-child{border-left:0}
+.shot img{width:100%;height:auto;border:1px solid var(--line)}
+.shot p{margin-top:14px;font-size:15px;color:var(--muted)}
+
+/* features */
+.features{border-top:1px solid var(--line)}
+.features .cols{display:grid;grid-template-columns:repeat(4,1fr)}
+.features article{padding:36px 24px 44px 0}
+.features article+article{padding-left:24px;border-left:1px solid var(--line)}
+.features h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.features p{margin-top:8px;color:var(--muted);font-size:16px;max-width:26ch}
+
+/* install */
+.install{border-top:1px solid var(--line);padding:clamp(48px,7vw,96px) 0}
+.install .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.install h2{grid-column:1 / span 4;font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.install .lead{margin-top:12px;color:var(--muted);font-size:16px;max-width:28ch;font-weight:400}
+.steps{grid-column:6 / -1;list-style:none;border-top:1px solid var(--line);counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(s);color:var(--accent);font-weight:600}
+.steps b{display:block;font-weight:500;font-size:18px}
+.steps span{color:var(--muted);font-size:16px;display:block;margin-top:2px;max-width:52ch}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px}
+footer a:hover{color:var(--text)}
+footer .links{display:flex;gap:24px}
+footer small{display:block;margin-top:24px;font-size:13px;max-width:72ch;line-height:1.55;color:#666}
+
+/* responsive */
+@media (max-width:900px){
+  .hero h1,.hero .side{grid-column:1 / -1}
+  .meta{grid-template-columns:repeat(2,1fr)}
+  .meta div:nth-child(3){padding-left:0;border-left:0}
+  .meta div:nth-child(n+3){border-top:1px solid var(--line)}
+  .shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .shot{flex:0 0 68%;scroll-snap-align:start}
+  .features .cols{grid-template-columns:repeat(2,1fr)}
+  .features article:nth-child(odd){padding-left:0;border-left:0}
+  .features article:nth-child(n+3){border-top:1px solid var(--line)}
+  .install h2,.steps{grid-column:1 / -1}
+  .install .lead{max-width:none}
+}
+@media (max-width:520px){
+  nav a:not(.btn-s){display:none}
+  .actions .btn{flex:1 1 100%}
+  .shot{flex-basis:78%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Aurix home"><img src="src/logo.png" alt="" width="26" height="26">Aurix</a>
+    <nav aria-label="Primary">
+      <a href="#install">Install</a>
+      <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
+      <a class="btn-s" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="grid">
+        <h1>Your music.<br>Your Aurix.</h1>
+        <p class="side">A free music player for Android. Search anything, keep a library, download for offline.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download APK</a>
+          <a class="btn ghost" href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code on GitHub</a>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Version</dt><dd>7.0.0</dd></div>
+        <div><dt>Size</dt><dd>104 MB</dd></div>
+        <div><dt>Platform</dt><dd>Android</dd></div>
+        <div><dt>Price</dt><dd>Free</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="screens" aria-label="Screenshots">
+    <div class="wrap">
+      <div class="shots">
+        <figure class="shot"><img src="src/home.webp" alt="Aurix home screen with recommendations and recently played" width="720" height="1516" loading="eager"><p>Home</p></figure>
+        <figure class="shot"><img src="src/explore.webp" alt="Aurix search results" width="720" height="1516" loading="lazy"><p>Search</p></figure>
+        <figure class="shot"><img src="src/library.webp" alt="Aurix library with playlists, artists, albums and downloads" width="720" height="1516" loading="lazy"><p>Library</p></figure>
+        <figure class="shot"><img src="src/profile.webp" alt="Aurix profile screen" width="720" height="1516" loading="lazy"><p>Profile</p></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" aria-label="Features">
+    <div class="wrap">
+      <div class="cols">
+        <article><h3>Search</h3><p>Find songs and albums fast.</p></article>
+        <article><h3>Library</h3><p>Playlists, artists, albums, favorites.</p></article>
+        <article><h3>Offline</h3><p>Download music and play without a connection.</p></article>
+        <article><h3>Open source</h3><p>The full code is public on GitHub.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="install" id="install">
+    <div class="wrap">
+      <div class="grid">
+        <div style="grid-column:1 / span 4">
+          <h2>Install on Android</h2>
+          <p class="lead">Aurix is installed from an APK, so Android and Chrome will ask a few questions. This is normal.</p>
+        </div>
+        <ol class="steps">
+          <li><div><b>Download the file</b><span>Tap Download APK. When Chrome says this type of file can harm your device, choose Download anyway or Keep.</span></div></li>
+          <li><div><b>Open it</b><span>Tap Open when the download finishes, or find AurixV7.apk in your Downloads.</span></div></li>
+          <li><div><b>Allow installs from Chrome</b><span>If Android blocks the install, tap Settings and turn on Allow from this source. Then go back and tap Install.</span></div></li>
+          <li><div><b>If Play Protect warns you</b><span>Tap More details, then Install anyway. The warning appears for any app that is not from the Play Store.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span>© 2026 Aurix</span>
+      <div class="links">
+        <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
+        <a href="https://github.com/byhayush-commits/Aurix2.0/releases" rel="noopener">All releases</a>
+        <a href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download v7.0.0</a>
+      </div>
+    </div>
+    <small>Aurix is an independent project and is not affiliated with any music label, artist or streaming service. Artwork in screenshots belongs to its respective owners.</small>
+  </div>
+</footer>
+
+</body>
+</html>
