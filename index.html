@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurix">
 <meta property="og:url" content="https://aurixlaunch.vercel.app/">
-<meta property="og:image" content="https://aurixlaunch.vercel.app/src/og.png?v=3">
+<meta property="og:image" content="https://aurixlaunch.vercel.app/src/og.png?v=4">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="1200">
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aurix">
 <meta name="twitter:description" content="Listen. Without. Limits! Unlimited music on Android.">
-<meta name="twitter:image" content="https://aurixlaunch.vercel.app/src/og.png?v=3">
+<meta name="twitter:image" content="https://aurixlaunch.vercel.app/src/og.png?v=4">
 <link rel="icon" type="image/png" href="src/favicon.png">
 <link rel="apple-touch-icon" href="src/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,7 +186,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
     <nav aria-label="Primary">
       <a href="#install">Install</a>
       <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
-      <a class="btn-s" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download</a>
+      <a class="btn-s dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/latest">Download</a>
     </nav>
   </div>
 </header>
@@ -203,15 +203,15 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
         <div class="hero-r">
           <p class="side">Unlimited music on Android. Search anything, keep a library, play offline.</p>
           <div class="actions">
-            <a class="btn primary" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download APK</a>
+            <a class="btn primary dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/latest">Download APK</a>
             <a class="btn ghost" href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
           </div>
         </div>
       </div>
       <canvas class="wave" id="wave" aria-hidden="true"></canvas>
       <dl class="meta">
-        <div><dt>Version</dt><dd>7.0.0</dd></div>
-        <div><dt>Size</dt><dd>104 MB</dd></div>
+        <div><dt>Version</dt><dd id="dl-ver">7.1.0</dd></div>
+        <div><dt>Size</dt><dd id="dl-size">104 MB</dd></div>
         <div><dt>Platform</dt><dd>Android</dd></div>
         <div><dt>Released</dt><dd>Oct 2026</dd></div>
       </dl>
@@ -250,12 +250,14 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
           <p class="lead">Aurix comes straight from us, not the Play Store, so Android likes to say hello with a quick check first. Here's how the next minute goes.</p>
         </div>
         <ol class="steps">
-          <li class="rv" style="--i:0"><div><b>Download</b><span>Tap Download APK. Chrome gives a quick heads-up before saving any app file, it's just its routine. Tap Download anyway and it's on its way.</span></div></li>
-          <li class="rv" style="--i:1"><div><b>Open the file</b><span>When it's done, tap Open. You'll also find AurixV7.apk in your Downloads.</span></div></li>
-          <li class="rv" style="--i:2"><div><b>One small permission</b><span>Android asks once if Chrome can install apps. Tap Settings, switch on Allow from this source, step back and tap Install.</span></div></li>
-          <li class="rv" style="--i:3"><div><b>Play Protect says hi</b><span>It may take a quick look because Aurix isn't from the Play Store. Tap More details, then Install anyway. The full code is open on GitHub if you're curious.</span></div></li>
-          <li class="rv" style="--i:4"><div><b>Press play</b><span>Open Aurix, search a song and enjoy.</span></div></li>
-          <li class="rv note" style="--i:5"><div><b>If a song won't play</b><span>Now and then you may see "track couldn't be resolved". Just skip to the next song and carry on.</span></div></li>
+          <li class="rv" style="--i:0"><div><b>Remove the old version</b><span>If you already have Aurix, uninstall it first. A fresh install saves your battery. Long-press the Aurix icon, tap App info, then Uninstall.</span></div></li>
+          <li class="rv" style="--i:1"><div><b>Download</b><span>Tap Download APK. Chrome gives a quick heads-up before saving any app file, it's just its routine. Tap Download anyway and it's on its way.</span></div></li>
+          <li class="rv" style="--i:2"><div><b>Open the file</b><span>When it's done, tap Open. You'll also find the Aurix APK in your Downloads.</span></div></li>
+          <li class="rv" style="--i:3"><div><b>One small permission</b><span>Android asks once if Chrome can install apps. Tap Settings, switch on Allow from this source, step back and tap Install.</span></div></li>
+          <li class="rv" style="--i:4"><div><b>Play Protect says hi</b><span>It may take a quick look because Aurix isn't from the Play Store. Tap More details, then Install anyway. The full code is open on GitHub if you're curious.</span></div></li>
+          <li class="rv" style="--i:5"><div><b>Allow notifications</b><span>When Aurix asks to send notifications, tap Allow. That's how you'll hear about new updates. Missed it? Open Settings, Apps, Aurix, Notifications, and switch it on.</span></div></li>
+          <li class="rv" style="--i:6"><div><b>Press play</b><span>Open Aurix, search a song and enjoy.</span></div></li>
+          <li class="rv note" style="--i:7"><div><b>If a song won't play</b><span>Now and then you may see "track couldn't be resolved". Just skip to the next song and carry on.</span></div></li>
         </ol>
       </div>
     </div>
@@ -269,7 +271,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
       <div class="links">
         <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
         <a href="https://github.com/byhayush-commits/Aurix2.0/releases" rel="noopener">All releases</a>
-        <a href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.0.0/AurixV7.apk">Download v7.0.0</a>
+        <a class="dl" id="dl-foot" href="https://github.com/byhayush-commits/Aurix2.0/releases/latest">Download v7.1.0</a>
       </div>
     </div>
     <small>Aurix is an independent project and is not affiliated with any music label, artist or streaming service. Artwork in screenshots belongs to its respective owners.</small>
@@ -419,6 +421,25 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
     addEventListener('load', setup);
     setup();
   }
+
+  /* always point Download at the newest APK on GitHub (falls back to the releases page) */
+  (function(){
+    var dl = document.querySelectorAll('.dl');
+    if(!window.fetch || !dl.length) return;
+    fetch('https://api.github.com/repos/byhayush-commits/Aurix2.0/releases/latest', {headers:{Accept:'application/vnd.github+json'}})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(rel){
+        var a = (rel.assets || []).filter(function(x){ return /\.apk$/i.test(x.name); })[0];
+        if(!a) return;
+        Array.prototype.forEach.call(dl, function(el){ el.href = a.browser_download_url; });
+        var sz = document.getElementById('dl-size'); if(sz && a.size) sz.textContent = Math.round(a.size/1048576) + ' MB';
+        var m = (rel.tag_name || '').match(/\d+\.\d+\.\d+/);
+        if(m){
+          var v = document.getElementById('dl-ver'); if(v) v.textContent = m[0];
+          var f = document.getElementById('dl-foot'); if(f) f.textContent = 'Download v' + m[0];
+        }
+      }).catch(function(){});
+  })();
 })();
 </script>
 </body>
