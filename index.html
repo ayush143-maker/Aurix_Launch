@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aurix">
 <meta property="og:url" content="https://aurixlaunch.vercel.app/">
-<meta property="og:image" content="https://aurixlaunch.vercel.app/src/share.png?v=1">
+<meta property="og:image" content="https://aurixlaunch.vercel.app/src/share.png?v=2">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="1200">
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aurix">
 <meta name="twitter:description" content="Listen. Without. Limits! Unlimited music on Android.">
-<meta name="twitter:image" content="https://aurixlaunch.vercel.app/src/share.png?v=1">
+<meta name="twitter:image" content="https://aurixlaunch.vercel.app/src/share.png?v=2">
 <link rel="icon" type="image/png" href="src/favicon.png">
 <link rel="apple-touch-icon" href="src/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,7 +186,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
     <nav aria-label="Primary">
       <a href="#install">Install</a>
       <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
-      <a class="btn-s dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/tag/v7.1.0">Download</a>
+      <a class="btn-s dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.1.0/Aurix7.1.apk">Download</a>
     </nav>
   </div>
 </header>
@@ -203,7 +203,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
         <div class="hero-r">
           <p class="side">Unlimited music on Android. Search anything, keep a library, play offline.</p>
           <div class="actions">
-            <a class="btn primary dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/tag/v7.1.0">Download APK</a>
+            <a class="btn primary dl" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.1.0/Aurix7.1.apk">Download APK</a>
             <a class="btn ghost" href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
           </div>
         </div>
@@ -211,7 +211,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
       <canvas class="wave" id="wave" aria-hidden="true"></canvas>
       <dl class="meta">
         <div><dt>Version</dt><dd id="dl-ver">7.1.0</dd></div>
-        <div><dt>Size</dt><dd id="dl-size">~104 MB</dd></div>
+        <div><dt>Size</dt><dd id="dl-size">104 MB</dd></div>
         <div><dt>Platform</dt><dd>Android</dd></div>
         <div><dt>Released</dt><dd>Oct 2026</dd></div>
       </dl>
@@ -271,7 +271,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
       <div class="links">
         <a href="https://github.com/byhayush-commits/Aurix2.0" rel="noopener">Source code</a>
         <a href="https://github.com/byhayush-commits/Aurix2.0/releases" rel="noopener">All releases</a>
-        <a class="dl" id="dl-foot" href="https://github.com/byhayush-commits/Aurix2.0/releases/tag/v7.1.0">Download v7.1.0</a>
+        <a class="dl" id="dl-foot" href="https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.1.0/Aurix7.1.apk">Download v7.1.0</a>
       </div>
     </div>
     <small>Aurix is an independent project and is not affiliated with any music label, artist or streaming service. Artwork in screenshots belongs to its respective owners.</small>
@@ -427,7 +427,7 @@ footer small{display:block;margin-top:16px;font-size:13px;max-width:72ch;line-he
      (GitHub > release > long-press the .apk > Copy link). Leave it empty and the
      page tries GitHub's "latest release" API, then falls back to the release page. */
   (function(){
-    var APK_URL = '';
+    var APK_URL = 'https://github.com/byhayush-commits/Aurix2.0/releases/download/v7.1.0/Aurix7.1.apk';
     var dl = document.querySelectorAll('.dl');
     if(!dl.length) return;
     function point(url){ Array.prototype.forEach.call(dl, function(el){ el.href = url; }); }
