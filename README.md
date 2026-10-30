@@ -10,6 +10,6 @@ Open `index.html` in a modern browser, or serve the repository over HTTP:
 
 Visit http://localhost:8000.
 
-## Project files
+## Making and reviewing changes
 
-`index.html` is the main page, and `src/` contains supporting visual assets. Keep asset paths and download or source links up to date when editing the page.
+`index.html` is the main page, and `src/` contains supporting visual assets. After editing, reload the page in your browser and check that the layout, asset paths, and download or source links appear and work as intended. Keep asset paths and links up to date.
