@@ -12,6 +12,8 @@ python -m http.server 8000
 
 Visit [http://localhost:8000](http://localhost:8000). To host the landing page, serve `index.html` and the supporting files in `src/` together as static files.
 
-## Review changes
+## Personalize and review
 
-`index.html` is the main page, and `src/` contains supporting visual assets. After editing, reload the page in your browser and check the layout, asset paths, and download and source links.
+Edit the landing-page copy and presentation in `index.html`. The page references `src/favicon.png` and `src/apple-touch-icon.png`; keep those files at those paths, or update the corresponding references in `index.html` if you replace or relocate them. The page also loads Outfit from Google Fonts, so retain its font links if you want to keep that typography.
+
+After editing, reload the page in your browser and check the layout, asset paths, and download and source links.
