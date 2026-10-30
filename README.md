@@ -1,19 +1,17 @@
 # Aurix_Launch
 
-A static landing page for the Aurix Android music player, with install/download and source-code links plus product highlights such as search, library, lyrics, and offline listening.
+Aurix_Launch is the public-facing landing page for **Aurix**, a music player presented around the idea of listening without limits. The page introduces the app, highlights its listening experience, and provides links for downloading the app and exploring its source.
 
-## Run locally
+The product highlights described on the page include music search, a personal library, lyrics, and offline listening. These are marketing descriptions of the app; the landing page itself is not the Android player.
 
-Open index.html in a modern browser. If browser restrictions block local assets or APIs, serve the folder over HTTP.
+## Preview locally
 
-## Structure and assets
+This is a static website. Open index.html in a modern browser, or serve the repository over HTTP:
 
-`index.html` is the primary entry point. Keep linked images, audio, scripts, and styles in their existing relative locations; renaming files may break references.
+    python -m http.server 8000
 
-## Preview and deployment
+Visit http://localhost:8000 to preview the page.
 
-Open the page in a modern browser. If local-file behavior is restricted, start a simple HTTP server from this folder and open the local address in your browser. For static hosting, publish the correct root folder and check asset paths after deployment.
+## Project files
 
-## Making changes
-
-Test the page after edits and check both phone-sized and desktop-sized viewports. Confirm that buttons and other visible interactions work in the deployed version as well as locally.
+The main page lives in index.html, with supporting visual assets under src/. Keep asset paths relative to the page and check the download/source links whenever those destinations change. The layout is designed as a product landing page, so edits should keep the app introduction, feature highlights, and primary links easy to follow.
