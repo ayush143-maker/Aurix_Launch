@@ -62,3 +62,10 @@ These are future browser checks, not compliance claims or verified results:
 - [ ] If meaningful imagery is present or added, check its text alternative; treat decorative imagery accordingly. If motion is present or added, check reduced-motion behavior.
 
 No review results are recorded here; complete the checklists in a browser after making changes.
+
+## Final release review
+
+- Open `index.html` from the published location and confirm the page loads as expected.
+- Verify local references such as `src/favicon.png`, `src/apple-touch-icon.png` resolve with the same relative paths after publishing.
+- Test with network access available and keep a sensible fallback for externally loaded resources.
+- Review the published result once on a narrow screen and once on a wider screen; treat this as a release check, not an automated test report.
