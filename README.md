@@ -26,4 +26,15 @@ These are actions to perform, not verified results:
 - [ ] Inspect the layout at narrow and wide viewport widths, including text wrapping and link usability.
 - [ ] If reviewing typography, check how the page appears with its Google Fonts links available; the page references Outfit from Google Fonts.
 
-No review results are recorded here; complete the checklist in the browser after making changes.
+## Accessibility review checklist
+
+These are future browser checks, not compliance claims or verified results:
+
+- [ ] Use Tab and Shift+Tab to reach the download, source, and any other interactive links or controls. Check that the keyboard order is logical and each control is usable without a pointer.
+- [ ] Confirm each focused link or control has a visible focus indicator against the landing page's styling.
+- [ ] Check that link text communicates its destination or action; do not rely on visual appearance or an icon alone to explain a control.
+- [ ] Check contrast for the page text, links, and controls against their backgrounds, including at narrow viewport widths.
+- [ ] If meaningful imagery is present or added to `index.html` or `src/`, check that it has an appropriate text alternative; treat decorative imagery as decorative.
+- [ ] If motion or animated effects are present or added, check that they respect the browser or operating system's reduced-motion preference.
+
+No review results are recorded here; complete the checklists in a browser after making changes.
