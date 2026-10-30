@@ -16,6 +16,10 @@ Visit [http://localhost:8000](http://localhost:8000). To host the landing page, 
 
 Edit the landing-page copy and presentation in `index.html`. The page references `src/favicon.png` and `src/apple-touch-icon.png`; keep those files at those paths, or update the corresponding references in `index.html` if you replace or relocate them. The page also loads Outfit from Google Fonts, so retain its font links if you want to keep that typography.
 
+## Contributor handoff
+
+Keep changes focused on the landing page or its supporting files in `src/`. Preserve existing filenames and relative references, including the icon paths, unless a move or rename is necessary; update the references in `index.html` if paths change. Summarize what changed and which files were affected. Manually review the page before publishing; the checklists below are review actions, not verified results.
+
 ## Troubleshooting
 
 These are diagnostic steps, not reports of known problems.
