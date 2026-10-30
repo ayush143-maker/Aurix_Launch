@@ -12,4 +12,4 @@ Visit http://localhost:8000.
 
 ## Project files
 
-The main page is `index.html`, with supporting visual assets under `src/`. Keep asset paths and download or source links up to date when editing the page.
+`index.html` is the main page, and `src/` contains supporting visual assets. Keep asset paths and download or source links up to date when editing the page.
