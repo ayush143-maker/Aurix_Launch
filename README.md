@@ -4,7 +4,7 @@ Aurix_Launch is a static HTML landing page for **Aurix**, a music player. Visito
 
 ## Preview locally
 
-Open `index.html` in a modern browser, or serve the repository over HTTP:
+Open `index.html` in a browser, or serve the repository over HTTP:
 
     python -m http.server 8000
 
