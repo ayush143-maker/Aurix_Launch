@@ -69,3 +69,8 @@ No review results are recorded here; complete the checklists in a browser after 
 - Verify local references such as `src/favicon.png`, `src/apple-touch-icon.png` resolve with the same relative paths after publishing.
 - Test with network access available and keep a sensible fallback for externally loaded resources.
 - Review the published result once on a narrow screen and once on a wider screen; treat this as a release check, not an automated test report.
+
+## Repository map
+
+- `index.html` — HTML page entry point.
+- `src` — source-code directory.
