@@ -16,9 +16,21 @@ Visit [http://localhost:8000](http://localhost:8000). To host the landing page, 
 
 Edit the landing-page copy and presentation in `index.html`. The page references `src/favicon.png` and `src/apple-touch-icon.png`; keep those files at those paths, or update the corresponding references in `index.html` if you replace or relocate them. The page also loads Outfit from Google Fonts, so retain its font links if you want to keep that typography.
 
+## Deployment-readiness checklist
+
+These are actions to complete before and after publishing, not evidence that a deployment exists or that any checks have passed.
+
+- [ ] Use the repository root as the source directory: it contains `index.html` and `src/`. The published site root must serve `index.html` as the landing page. No separate build output directory or build script is listed for this repository.
+- [ ] Include `src/favicon.png` and `src/apple-touch-icon.png` at those relative paths in the published files, or update the corresponding references in `index.html` and verify the replacement paths. Check any other local references before publishing.
+- [ ] The page loads Outfit from Google Fonts using external links. Retain network access for those requests if you want that typography, and check the page's fallback appearance if the font resource is unavailable.
+- [ ] No `.env.example` or separate configuration file is listed. Do not invent environment variables or add credentials to `index.html` or other tracked assets. Browser-delivered content is visible to visitors.
+- [ ] Before publishing, open the page locally and check its layout, icons, font behavior, and visible links. The landing page's feature descriptions do not establish that the separate player features work here.
+- [ ] After publishing, open the published page in a browser. Confirm that `index.html` renders, local icons load, and the visible download, source, and other links lead to their intended destinations. Inspect the browser Console and Network panel for failed requests; distinguish local asset paths from Google Fonts requests.
+- [ ] Review the published page at narrow and desktop-sized viewports, and try its visible links and controls. Record any issues; no compatibility or deployment results are recorded here.
+
 ## Contributor handoff
 
-Keep changes focused on the landing page or its supporting files in `src/`. Preserve existing filenames and relative references, including the icon paths, unless a move or rename is necessary; update the references in `index.html` if paths change. Summarize what changed and which files were affected. Manually review the page before publishing; the checklists below are review actions, not verified results.
+Keep changes focused on the landing page or its supporting files in `src/`. Preserve existing filenames and relative references, including the icon paths, unless a move or rename is necessary; update the references in `index.html` if paths change. Summarize what changed and which files were affected. Manually review the page before publishing; the checklist above describes review actions, not results already verified.
 
 ## Troubleshooting
 
